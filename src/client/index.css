@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+* {
+    font-family: "Pangolin";
+}
 .mainbody {
     display: flex;
     flex-wrap: wrap;
@@ -12,11 +16,44 @@
     padding: 10px;
     transition: box-shadow 0.3s ease;
 }
-.mainbox:hover {
+.mainbox:hover,
+.navbutton:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 #image {
     margin: 0 auto;
     border: 1px solid black;
     border-radius: 10px;
+}
+.navigation {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5px;
+}
+.navbutton {
+    border: 1px black solid;
+    border-radius: 3px;
+    width: 60px;
+    padding: 4px;
+    transition: box-shadow 0.3s ease;
+}
+label {
+    font-size: 20px;
+}
+#bannerimg {
+    width: 80vw;
+    margin-left: 10%;
+    border: 1px solid black;
+}
+#abouttitile {
+    text-align: center;
+    text-decoration: underline;
+}
+.info {
+    margin: 2%;
+}
+#backbutton {
+    display: block;
+    width: 100px;
+    margin: 0 auto;
 }
