@@ -33,7 +33,7 @@
 .navbutton {
     border: 1px black solid;
     border-radius: 3px;
-    width: 60px;
+    min-width: 60px;
     padding: 4px;
     transition: box-shadow 0.3s ease;
 }
@@ -56,4 +56,27 @@ label {
     display: block;
     width: 100px;
     margin: 0 auto;
+}
+#heart {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    transition: all 300ms;
+}
+#heart:hover {
+    fill: red;
+    filter: drop-shadow(0px 2px 3px rgba(255, 0, 0, 0.8));
+}
+#title {
+    height: 40px;
+}
+.svgbutton {
+    background-color: rgb(0, 0, 0, 0);
+    border: none;
+    display: flex;
+    margin: 0 auto;
+    width: 60px;
 }
