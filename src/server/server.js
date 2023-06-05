@@ -14,7 +14,6 @@ const PORT = 8000;
     id:default
     title:str,
     img:url,
-    watched:bool
 }`;
 async function connectAndInsert(data) {
     try {
