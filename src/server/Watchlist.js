@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { HeartButton } from "./functions";
+import { useNavigate } from "react-router";
 
 export default function Watchlist() {
     const [details, setDetails] = useState();
+    const navigate = useNavigate();
+    const searchbar = document.getElementById("searchbar");
+    if (searchbar) {
+        searchbar.disabled = true;
+    }
     useEffect(() => {
         axios
             .get("http://localhost:8000/get")
-            .then((res) => setDetails(res.data));
+            .then((res) => setDetails(res.data))
+            .catch((err) => console.log(err));
     }, []);
-    console.log(details);
     if (details !== undefined && details !== []) {
         return (
             <>
@@ -18,7 +24,10 @@ export default function Watchlist() {
                         <div className="mainbox" key={index}>
                             <p id="title">{result.title}</p>
                             <img
-                                src={result.poster_path}
+                                src={
+                                    "https://image.tmdb.org/t/p/w1280" +
+                                    result.poster_path
+                                }
                                 width={"300px"}
                                 height={"400px"}
                                 id="image"
@@ -29,6 +38,13 @@ export default function Watchlist() {
                         </div>
                     ))}
                 </div>
+                <button
+                    id="backbutton"
+                    className="navbutton"
+                    onClick={() => navigate("/")}
+                >
+                    Go Back
+                </button>
             </>
         );
     } else {
