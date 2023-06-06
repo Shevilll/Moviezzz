@@ -14,7 +14,8 @@ export function GetMovies({ page, query }) {
             )
             .then((res) => {
                 setData([res.data]);
-            });
+            })
+            .catch((err) => console.log(err));
     }, [page, query, API]);
     handleExtras(data);
     return (
@@ -72,12 +73,13 @@ function handleExtras(data) {
 }
 export { pages };
 
-async function getHeart(title) {
-    let list = await axios.get("http://localhost:8000/get");
-    list = list.data;
+async function getHeart(title, poster) {
+    let list = await axios
+        .get("http://localhost:8000/get")
+        .catch((err) => console.log(err));
     if (list) {
-        for (const element of list) {
-            if (element.title === title) {
+        for (const element of list.data) {
+            if (element.title === title && element.poster_path === poster) {
                 return true;
             }
         }
@@ -85,8 +87,8 @@ async function getHeart(title) {
     return false;
 }
 
-async function checkHeart(title) {
-    const result = await getHeart(title);
+async function checkHeart(title, poster) {
+    const result = await getHeart(title, poster);
     return result;
 }
 
@@ -96,25 +98,19 @@ export function HeartButton({ result }) {
 
     useEffect(() => {
         const fetchHeartStatus = async () => {
-            const res = await checkHeart(result.title);
+            const res = await checkHeart(result.title, result.poster_path);
             setHeart(res);
             setFillColor(res ? "red" : "black");
         };
         fetchHeartStatus();
-    }, [result.title]);
+    }, [result.title, result.poster_path]);
 
     const handleButtonClick = async (e) => {
         e.stopPropagation();
         if (!heart) {
-            postData(
-                result.title,
-                "https://image.tmdb.org/t/p/w1280" + result.poster_path
-            );
+            postData(result.title, result.poster_path);
         } else {
-            deleteData(
-                result.title,
-                "https://image.tmdb.org/t/p/w1280" + result.poster_path
-            );
+            deleteData(result.title, result.poster_path);
         }
         setHeart(!heart);
         setFillColor(heart ? "black" : "red");
