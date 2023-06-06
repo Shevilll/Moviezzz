@@ -16,7 +16,11 @@ const MovieDetails = () => {
             <p className="info">{overview}</p>
             <h5 className="info">Popularity: {popularity}</h5>
             <h5 className="info">Release-Date: {releasedate}</h5>
-            <button id="backbutton" onClick={() => navigate("/")}>
+            <button
+                id="backbutton"
+                className="navbutton"
+                onClick={() => navigate("/")}
+            >
                 Go Back
             </button>
         </div>
