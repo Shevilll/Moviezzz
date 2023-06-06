@@ -4,10 +4,6 @@
 
 <p id="description">A website using MongoDB and ExpressJS as backend and React as frontend.</p>
 
-<h2>Project Screenshots:</h2>
-
-<img src="" alt="project-screenshot" width="400" height="400/">
-
 <h2>🛠️ Installation Steps:</h2>
 
 <p>1. Clone the repo:</p>
