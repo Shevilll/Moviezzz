@@ -101,7 +101,6 @@ function NavBar({ setPage, setQuery }) {
                     </button>
                 </div>
             </nav>
-            ;
         </>
     );
 }
