@@ -16,7 +16,7 @@ export default function Watchlist() {
             .then((res) => setDetails(res.data))
             .catch((err) => console.log(err));
     }, []);
-    if (details !== undefined && details !== []) {
+    if (details !== undefined && details != []) {
         return (
             <>
                 <div className="mainbody">
